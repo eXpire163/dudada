@@ -1,0 +1,58 @@
+name: Build and Package Application
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      # Install dependencies for both Vue.js and Express
+      - name: Install and build frontend
+        run: |
+          # Install frontend dependencies
+          npm install
+          npm run build
+        working-directory: client
+
+      # Build the Vue.js application
+      - name: Build frontend
+        run: |
+          npm install
+          npm run build
+
+      # Copy Vue.js build output to backend `dist` folder
+      - name: Move frontend build to backend
+        run: |
+          mkdir -p dist
+          cp -R client/dist/* dist/
+          rm -rf client/
+
+      # Archive the build for deployment
+      - name: Archive build artifacts
+        run: zip -r app-package.zip backend/*
+        env:
+          CI: true
+
+      # Upload the artifact for download or further deployment
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-package
+          path: app-package.zip

@@ -9,12 +9,18 @@ const { v4: uuidv4 } = require('uuid'); // Import UUID package
 const app = express();
 const PORT = 5000;
 
+
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
 // File path for the users JSON file
 const usersFilePath = path.join(__dirname, 'users.json');
+
+
+// Serve static files from Vue.js build directory
+const vueDistPath = path.join(__dirname, 'dist');
+app.use(express.static(vueDistPath));
 
 // Function to load users from the JSON file
 const loadUsers = () => {
@@ -88,6 +94,11 @@ app.put('/toggle-user/:id', (req, res) => {
 app.get('/users', (req, res) => {
     const users = loadUsers(); // Load the current list of users
     res.send(users);
+});
+
+// Serve the Vue.js app for all other routes
+app.get('*', (req, res) => {
+    res.sendFile(path.join(vueDistPath, 'index.html'));
 });
 
 // Start server
