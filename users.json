@@ -1,0 +1,42 @@
+[
+  {
+    "id": "69a9612e-310a-4f76-8717-5f7ea3e404e2",
+    "name": "Tim",
+    "active": false
+  },
+  {
+    "id": "e41d3895-de32-4b05-8df9-d5c17e794d38",
+    "name": "Max",
+    "active": false
+  },
+  {
+    "id": "a78427ff-5730-4151-9c71-ad37bbfe9d17",
+    "name": "Karl",
+    "active": false
+  },
+  {
+    "id": "5320b112-a7b8-4032-a6bf-5962c207477e",
+    "name": "Chris",
+    "active": true
+  },
+  {
+    "id": "c865535f-bd12-49a5-baa2-1716a44eb4d4",
+    "name": "Felix",
+    "active": false
+  },
+  {
+    "id": "2405b187-bb96-4053-aade-ae7808887b70",
+    "name": "Daniel",
+    "active": false
+  },
+  {
+    "id": "0c1547d1-e8cf-4946-bc96-b26842b025b1",
+    "name": "Hans",
+    "active": false
+  },
+  {
+    "id": "841b4af8-a3ad-4b42-8337-f2f99ece1507",
+    "name": "Egon",
+    "active": false
+  }
+]
