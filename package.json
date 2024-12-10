@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start-server": "nodemon server.js",
+    "build": "node esbuild.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -20,6 +21,7 @@
     "ws": "^8.18.0"
   },
   "devDependencies": {
+    "esbuild": "^0.24.0",
     "nodemon": "^3.1.7"
   }
 }
