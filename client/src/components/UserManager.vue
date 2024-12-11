@@ -32,7 +32,7 @@ export default {
     methods: {
         async addUser() {
             try {
-                const response = await axios.post('http://localhost:5000/add-user', this.newUser);
+                const response = await axios.post('http://localhost:5000/api/add-user', this.newUser);
                 this.users = response.data.users;
             } catch (error) {
                 console.error(error.response.data);
@@ -40,7 +40,7 @@ export default {
         },
         async removeUser(id) {
             try {
-                const response = await axios.delete(`http://localhost:5000/remove-user/${id}`);
+                const response = await axios.delete(`http://localhost:5000/api/remove-user/${id}`);
                 this.users = response.data.users;
             } catch (error) {
                 console.error(error.response.data);
@@ -48,7 +48,7 @@ export default {
         },
         async toggleUser(id) {
             try {
-                const response = await axios.put(`http://localhost:5000/toggle-user/${id}`);
+                const response = await axios.put(`http://localhost:5000/api/toggle-user/${id}`);
                 this.users = this.users.map(user => (user.id === id ? response.data.user : user));
             } catch (error) {
                 console.error(error.response.data);
@@ -73,7 +73,7 @@ export default {
     },
     async mounted() {
         this.setupWebSocket(); // Initialize WebSocket connection
-        const response = await axios.get('http://localhost:5000/users');
+        const response = await axios.get('http://localhost:5000/api/users');
         this.users = response.data;
     }
 };

@@ -3,7 +3,7 @@ const { build } = require('esbuild');
 
 build({
     entryPoints: ['server.js'], // Entry point of your Express app
-    outfile: 'backend/server.js',          // Output bundled file
+    outfile: 'dist/server.js',          // Output bundled file
     platform: 'node',                   // Target Node.js environment
     bundle: true,                       // Bundle all dependencies
     external: ['express', 'ws'],        // External dependencies not bundled

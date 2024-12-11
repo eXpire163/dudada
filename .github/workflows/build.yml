@@ -23,30 +23,16 @@ jobs:
         with:
           node-version: '22'
 
-      # Install dependencies for both Vue.js and Express
       - name: Install and build frontend
         run: |
-          # Install frontend dependencies
-          npm install
-          npm run build
-        working-directory: client
-
-      # Build the Vue.js application
-      - name: Build frontend
-        run: |
-          npm install
-          npm run build
-
-      # Copy Vue.js build output to backend `dist` folder
-      - name: Move frontend build to backend
-        run: |
-          mkdir -p dist
-          cp -R client/dist/* dist/
-          rm -rf client/
+          chmod +x ./package.sh
+          ./package.sh
+        env:
+          CI: true
 
       # Archive the build for deployment
       - name: Archive build artifacts
-        run: zip -r app-package.zip backend/*
+        run: zip -r dudada.zip dist/*
         env:
           CI: true
 
@@ -54,5 +40,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: app-package
-          path: app-package.zip
+          name: dudada
+          path: dudada.zip

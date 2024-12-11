@@ -10,6 +10,11 @@ const app = express();
 const PORT = 5000;
 
 
+// TODO
+// adapt build to server build
+// copy stuff
+// add default users to build
+
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
@@ -19,7 +24,7 @@ const usersFilePath = path.join(__dirname, 'users.json');
 
 
 // Serve static files from Vue.js build directory
-const vueDistPath = path.join(__dirname, 'dist');
+const vueDistPath = path.join(__dirname, 'client');
 app.use(express.static(vueDistPath));
 
 // Function to load users from the JSON file
@@ -53,7 +58,7 @@ const broadcast = (data) => {
 };
 
 // API Endpoints
-app.post('/add-user', (req, res) => {
+app.post('/api/add-user', (req, res) => {
     const { name } = req.body;
     if (!name) return res.status(400).send({ error: "Invalid input" });
 
@@ -66,7 +71,7 @@ app.post('/add-user', (req, res) => {
     broadcast({ type: 'update', users });
 });
 
-app.delete('/remove-user/:id', (req, res) => {
+app.delete('/api/remove-user/:id', (req, res) => {
     const { id } = req.params;
     let users = loadUsers(); // Load the current list of users
     users = users.filter(user => user.id !== id);
@@ -76,7 +81,7 @@ app.delete('/remove-user/:id', (req, res) => {
     broadcast({ type: 'update', users });
 });
 
-app.put('/toggle-user/:id', (req, res) => {
+app.put('/api/toggle-user/:id', (req, res) => {
     const { id } = req.params;
     const users = loadUsers(); // Load the current list of users
     const user = users.find(u => u.id === id);
@@ -91,7 +96,7 @@ app.put('/toggle-user/:id', (req, res) => {
     broadcast({ type: 'update', users });
 });
 
-app.get('/users', (req, res) => {
+app.get('/api/users', (req, res) => {
     const users = loadUsers(); // Load the current list of users
     res.send(users);
 });
