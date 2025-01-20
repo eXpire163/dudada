@@ -113,7 +113,9 @@ const server = app.listen(PORT, () => {
 
 // WebSocket Upgrade Handling
 server.on('upgrade', (request, socket, head) => {
+    // console.log(`WebSocket 1 client connected ${request} ${socket} ${head}`);
     wss.handleUpgrade(request, socket, head, (ws) => {
+        // console.log(`WebSocket 2 client connected ${request} ${socket} ${head}`);
         wss.emit('connection', ws, request);
     });
 });

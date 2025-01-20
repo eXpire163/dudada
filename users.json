@@ -12,12 +12,12 @@
   {
     "id": "a78427ff-5730-4151-9c71-ad37bbfe9d17",
     "name": "Karl",
-    "active": false
+    "active": true
   },
   {
     "id": "5320b112-a7b8-4032-a6bf-5962c207477e",
     "name": "Chris",
-    "active": true
+    "active": false
   },
   {
     "id": "c865535f-bd12-49a5-baa2-1716a44eb4d4",
