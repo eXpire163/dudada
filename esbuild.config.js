@@ -6,7 +6,7 @@ build({
     outfile: 'dist/server.js',          // Output bundled file
     platform: 'node',                   // Target Node.js environment
     bundle: true,                       // Bundle all dependencies
-    external: ['express', 'ws'],        // External dependencies not bundled
+    external: [],        // External dependencies not bundled 'express', 'ws'
     minify: true,                       // Minify for production
     sourcemap: true,                    // Generate source map for debugging
 })
