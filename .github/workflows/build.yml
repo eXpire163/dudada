@@ -42,5 +42,3 @@ jobs:
         with:
           name: dudada
           path: dudada.zip
-
-      - name: publish package on github
